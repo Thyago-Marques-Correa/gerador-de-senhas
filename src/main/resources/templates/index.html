@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerador de Senhas</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<main>
+  <h1>Gerador de Senhas</h1>
+  <form th:action="@{/gerar}" method="post">
+    <label for="tamanho">Tamanho (4 a 64)</label>
+    <input id="tamanho" type="number" name="tamanho" min="4" max="64" th:value="${tamanho}" required>
+    <label class="inline"><input class="check" type="checkbox" name="maiusculas" th:checked="${maiusculas}"> Letras maiusculas</label>
+    <label class="inline"><input class="check" type="checkbox" name="numeros" th:checked="${numeros}"> Numeros</label>
+    <label class="inline"><input class="check" type="checkbox" name="simbolos" th:checked="${simbolos}"> Simbolos</label>
+    <button type="submit">Gerar senha</button>
+  </form>
+  <div class="resultado" th:if="${senha != null}">
+    <strong th:text="${senha}"></strong>
+  </div>
+</main>
+</body>
+</html>
